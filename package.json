@@ -1,0 +1,52 @@
+{
+  "bundleDependencies": false,
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "command-exists": "^1.2.9",
+    "mkdirp": "^0.5.5",
+    "yeoman-generator": "^4.12.0",
+    "yosay": "^2.0.2"
+  },
+  "deprecated": false,
+  "description": "Scaffold out a front-end web app",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "web",
+    "app",
+    "front-end",
+    "angular"
+  ],
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "main": "app/index.js",
+  "name": "generator-angular-app",
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "endOfLine": "auto"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "version": "1.0.0"
+}

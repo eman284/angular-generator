@@ -1,0 +1,27 @@
+{
+    "private": true,
+    "engines": {
+      "node": ">=4"
+    },
+    "browserslist": [
+      "> 1%",
+      "last 2 versions",
+      "Firefox ESR"
+    ],
+    "eslintConfig": {
+      "parserOptions": {
+        "sourceType": "module"
+      },
+      "env": {
+        "es6": true,
+        "node": true
+      },
+      "rules": {
+        "quotes": [
+          2,
+          "single"
+        ]
+      }
+    }
+  }
+  
