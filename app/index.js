@@ -24,15 +24,6 @@ module.exports = class extends Generator {
         if(this.options['skip-test-framework']){
             return;
         }
-
-        // this.composeWith(
-        //     require.resolve(
-        //         `generator-${this.options['test-framework']}/generators/app`
-        //     ),
-        //     {
-        //         'skip-install': this.options['skip-install']
-        //     }
-        // );
     }
     
      prompting(){
@@ -55,7 +46,7 @@ module.exports = class extends Generator {
             const hasSelectComponent = feat => selectComponent && selectComponent.includes(feat);
             const hasSelectPages = feat => selectPages && selectPages.includes(feat);
 
-            this.includeTitle =  answers.includeTitle;
+            this.includeProjectName =  answers.includeProjectName;
             this.includeKecklock = hasIdentityServerFeature('includeKecklock');
             this.includeWithoutIS = hasIdentityServerFeature('includeWithoutIS');
             this.includeMultiTheme = answers.includeMultiTheme;
@@ -97,7 +88,7 @@ module.exports = class extends Generator {
     }
     writing() {
         const templateData = {
-            includeTitle:this.includeTitle,
+            includeProjectName:this.includeProjectName,
             includeKecklock: this.includeKecklock,
             includeWithoutIS:this.includeWithoutIS,
             includeMultiTheme :this.includeMultiTheme,
@@ -162,7 +153,16 @@ module.exports = class extends Generator {
         });
 
         if (this.includeAboutUs) {
-            copy('pages/about-us.html', 'app/pages/about-us.html');
+            copy('angular/_src/app/pages/about-us/about-us.component.html', 'src/app/pages/about-us/about-us.component.html');
+            copy('angular/_src/app/pages/about-us/about-us.component.scss', 'src/app/pages/about-us/about-us.component.scss');
+            copy('angular/_src/app/pages/about-us/about-us.component.ts', 'src/app/pages/about-us/about-us.component.ts');
+            copy('angular/_src/app/pages/about-us/about-us.component.spec.ts', 'src/app/pages/about-us/about-us.component.spec.ts');
+          }
+          if (this.includeContactUs) {
+            copy('angular/_src/app/pages/contact-us/contact-us.component.html', 'src/app/pages/contact-us/contact-us.component.html');
+            copy('angular/_src/app/pages/contact-us/contact-us.component.scss', 'src/app/pages/contact-us/contact-us.component.scss');
+            copy('angular/_src/app/pages/contact-us/contact-us.component.ts', 'src/app/pages/contact-us/contact-us.component.ts');
+            copy('angular/_src/app/pages/contact-us/contact-us.component.spec.ts', 'src/app/pages/contact-us/contact-us.component.spec.ts');
           }
 }
 

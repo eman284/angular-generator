@@ -2,5 +2,5 @@ Steps to run generator:-
 
 1- npm install -g yo
 2- open folder & run npm link
-3- run yo in commend line 
+3- run yo in commend line and select Angular App or run yo angular-app
 4- Run a generator Angular App

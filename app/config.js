@@ -21,8 +21,8 @@ module.exports = {
     prompts: [
         {
             type    : 'input',
-            name    : 'includeTitle',
-            message : 'ًWhat is project name ?',
+            name    : 'includeProjectName',
+            message : 'ًWhat is project name?',
           },
         {
             type: 'checkbox',
@@ -255,7 +255,7 @@ module.exports = {
             {
             name: 'User Profile',
             value: 'includeUserProfile',
-            checked: true
+            checked: false
         },
         {
             name: 'Reset password',
@@ -286,18 +286,157 @@ module.exports = {
         ]
       }
     ],
-    dirsToCreate: ['app/images', 'app/fonts'],
+    dirsToCreate: ['src/assets'],
     filesToCopy: [
         {
-          input: 'favicon.ico',
-          output: 'app/favicon.ico'
-        }
+            input: 'angular/_src/favicon.ico',
+            output: 'src/favicon.ico'
+          },
     ],
     filesToRender: [
         {
-          input: 'index.html',
-          output: 'app/index.html'
+            input: 'angular/_e2e/src/app.e2e-spec.ts',
+            output: 'e2e/src/app.e2e-spec.ts'
+        },
+
+        {
+        input: 'angular/_e2e/src/app.po.ts',
+        output: 'e2e/src/app.po.ts'
+        },
+
+        {
+        input: 'angular/_e2e/protractor.conf.js',
+        output: 'e2e/protractor.conf.js'
+        },
+
+        {
+            input:'angular/_e2e/_tsconfig.json',
+            output:'e2e/tsconfig.json'
+        },
+        {
+            input:'angular/_src/app/app-routing.module.ts',
+            output:'src/app/app-routing.module.ts' 
+        },
+        {
+            input:'angular/_src/app/app.component.html',
+            output:'src/app/app.component.html' 
+        },
+        {
+            input:'angular/_src/app/app.component.scss',
+            output:'src/app/app.component.scss' 
+           
+        },
+        
+        {
+            input:'angular/_src/app/app.component.spec.ts',
+            output:'src/app/app.component.spec.ts' 
+           
+        },
+        {
+            input:'angular/_src/app/app.component.ts',
+            output:'src/app/app.component.ts' 
+           
+        },
+        {
+            input:'angular/_src/app/app.module.ts',
+            output:'src/app/app.module.ts' 
+           
+        },
+
+        {
+            input:'angular/_src/app/pages/home/home.component.html',
+            output:'src/app/pages/home/home.component.html' 
+        },
+        {
+            input:'angular/_src/app/pages/home/home.component.scss',
+            output:'src/app/pages/home/home.component.scss' 
+        },
+        {
+            input:'angular/_src/app/pages/home/home.component.spec.ts',
+            output:'src/app/pages/home/home.component.spec.ts' 
+           
+        },
+        {
+            input:'angular/_src/app/pages/home/home.component.ts',
+            output:'src/app/pages/home/home.component.ts' 
+           
+        },
+        {
+            input:'angular/_src/environments/environment.prod.ts',
+            output:'src/environments/environment.prod.ts' 
+        },
+        {
+            input:'angular/_src/environments/environment.ts',
+            output:'src/environments/environment.ts' 
+        },
+        {
+            input:'angular/_src/_index.html',
+            output:'src/index.html' 
+        },
+        {
+            input:'angular/_src/main.ts',
+            output:'src/main.ts' 
+        },
+        {
+            input:'angular/_src/polyfills.ts',
+            output:'src/polyfills.ts' 
+        },
+
+        {
+            input:'angular/_src/test.ts',
+            output:'src/test.ts' 
+        },
+        {
+            input:'angular/_src/styles.scss',
+            output:'src/styles.scss' 
+        },
+        {
+            input:'angular/browserslistrc',
+            output:'.browserslistrc'
+        },
+        {
+            input:'angular/editorconfig',
+            output:'.editorconfig'
+        },
+
+        {
+            input:'angular/gitignore',
+            output:'.gitignore'
+        },
+        {
+            input:'angular/_angular.json',
+            output:'angular.json'
+        },
+
+        {
+            input:'angular/_karma.conf.js',
+            output:'karma.conf.js'
         }
+        ,
+        {
+            input:'angular/_package.json',
+            output:'package.json'
+        },
+        {
+            input:'angular/README.md',
+            output:'README.md'
+        },
+        {
+            input:'angular/_tsconfig.app.json',
+            output:'tsconfig.app.json' 
+        },
+        {
+            input:'angular/_tsconfig.json',
+            output:'tsconfig.json' 
+        },
+        {
+            input:'angular/_tsconfig.spec.json',
+            output:'tsconfig.spec.json' 
+        },
+        {
+            input:'angular/_tslint.json',
+            output:'tslint.json' 
+        },
     ]
 }
 
