@@ -1,0 +1,28 @@
+.header-comercial {
+  background-color: #0d8a86;
+  color: #fff;
+  padding: 15px 0;
+  line-height: 35px;
+}
+.text-left {
+  text-align: left !important;
+}
+.logo-name {
+  line-height: 39px;
+}
+.logo-name:before {
+  content: "";
+  display: inline-block;
+  height: 30px;
+  width: 2px;
+  background: #fff;
+  position: absolute;
+  right: 1px;
+  top: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+  .logo-name {
+    display: none;
+  }
+}

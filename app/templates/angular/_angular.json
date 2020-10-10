@@ -28,7 +28,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              <%_ if (includeMCITheme) { -%>
+              ,"src/app/mci/assets/css/rtl/style.css"
+              <%_ } -%>
+              <%_ if (includeDefultTheme) { -%>
+              ,"src/app/defult/assets/scss/main.scss"
+              <%_ } -%>
+              <%_ if (includeMERASTheme) { -%>
+                ,"src/app/meras/assets/scss/main.scss"
+              <%_ } -%>
+              <%_ if (includeSAUDITheme) { -%>
+                ,"src/app/saudi/assets/scss/main.scss"
+              <%_ } -%>
             ],
             "scripts": []
           },
@@ -92,7 +104,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+               <%_ if (includeMCITheme) { -%>
+                ,"src/app/mci/assets/css/rtl/style.css"
+                <%_ } -%>
+                <%_ if (includeDefultTheme) { -%>
+                ,"src/app/defult/assets/scss/main.scss"
+                <%_ } -%>
+                <%_ if (includeMERASTheme) { -%>
+                  ,"src/app/meras/assets/scss/main.scss"
+                <%_ } -%>
+                <%_ if (includeSAUDITheme) { -%>
+                  ,"src/app/saudi/assets/scss/main.scss"
+                <%_ } -%>
             ],
             "scripts": []
           }

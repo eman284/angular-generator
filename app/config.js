@@ -24,6 +24,11 @@ module.exports = {
             name    : 'includeProjectName',
             message : 'ًWhat is project name?',
           },
+          {
+            type    : 'input',
+            name    : 'includeThemeName',
+            message : 'ًWhat is Theme name?',
+          },
         {
             type: 'checkbox',
             name: 'identityServer',
@@ -42,10 +47,33 @@ module.exports = {
         ]
         },
         {
-            type: 'confirm',
-            name: 'includeMultiTheme',
-            message: 'Would you like to enable the multi theme?'
-        },
+            type: 'checkbox',
+            name: 'selectThemes',
+            message: 'Which Themes would you like to include?',
+            choices: [
+            {
+                name: 'Defult',
+                value: 'includeDefultTheme',
+                checked: true
+            },
+            {
+                name: 'MCI',
+                value: 'includeMCITheme',
+                checked: false
+            },
+            {
+                name: 'MERAS',
+                value: 'includeMERASTheme',
+                checked: false
+            }
+            ,
+            {
+                name: 'SAUDI',
+                value: 'includeSAUDITheme',
+                checked: false
+            }
+              ]
+          },
         {
             type: 'confirm',
             name: 'includeSSR',
@@ -344,21 +372,13 @@ module.exports = {
         },
 
         {
-            input:'angular/_src/app/pages/home/home.component.html',
-            output:'src/app/pages/home/home.component.html' 
-        },
-        {
-            input:'angular/_src/app/pages/home/home.component.scss',
-            output:'src/app/pages/home/home.component.scss' 
-        },
-        {
-            input:'angular/_src/app/pages/home/home.component.spec.ts',
-            output:'src/app/pages/home/home.component.spec.ts' 
+            input:'angular/_src/app/shared',
+            output:'src/app/shared' 
            
         },
         {
-            input:'angular/_src/app/pages/home/home.component.ts',
-            output:'src/app/pages/home/home.component.ts' 
+            input:'angular/_src/app/module.auth',
+            output:'src/app/module.auth' 
            
         },
         {
@@ -436,7 +456,12 @@ module.exports = {
         {
             input:'angular/_tslint.json',
             output:'tslint.json' 
+            
         },
+        {
+            input:'angular/_src/app/mci',
+            output:'src/app/<%= includeThemeName %>' 
+            
+        }
     ]
 }
-

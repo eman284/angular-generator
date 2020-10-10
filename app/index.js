@@ -39,18 +39,31 @@ module.exports = class extends Generator {
             const selectDesginSystem = answers.selectDesginSystem;
             const selectComponent = answers.selectComponent;
             const selectPages = answers.selectPages;
+            const selectTheme = answers.selectThemes;
 
             const hasIdentityServerFeature = feat => identityServer && identityServer.includes(feat);
+            const hasSelectThemesFeature = feat => selectTheme && selectTheme.includes(feat);
+            
             const hasSelectLanguageFeature = feat => selectLanguage && selectLanguage.includes(feat);
             const hasSlectDesginSystemFeature = feat => selectDesginSystem && selectDesginSystem.includes(feat);
             const hasSelectComponent = feat => selectComponent && selectComponent.includes(feat);
             const hasSelectPages = feat => selectPages && selectPages.includes(feat);
 
             this.includeProjectName =  answers.includeProjectName;
+            this.includeThemeName = answers.includeThemeName;
+            // this.includeMultiTheme = answers.includeMultiTheme;
+
             this.includeKecklock = hasIdentityServerFeature('includeKecklock');
             this.includeWithoutIS = hasIdentityServerFeature('includeWithoutIS');
-            this.includeMultiTheme = answers.includeMultiTheme;
+
+            this.includeMCITheme = hasSelectThemesFeature('includeMCITheme');
+            this.includeMERASTheme = hasSelectThemesFeature('includeMERASTheme');
+            this.includeSAUDITheme = hasSelectThemesFeature('includeSAUDITheme');
+            this.includeDefultTheme = hasSelectThemesFeature('includeDefultTheme');
+            // this.includeMultiTheme = answers.includeMultiTheme;
+
             this.includeSSR = answers.includeSSR;
+
             this.includeArLang =  hasSelectLanguageFeature('includeArLang');
             this.includeEnLang =  hasSelectLanguageFeature('includeEnLang');
             this.includeFrLang =  hasSelectLanguageFeature('includeFrLang');
@@ -89,9 +102,14 @@ module.exports = class extends Generator {
     writing() {
         const templateData = {
             includeProjectName:this.includeProjectName,
+            includeThemeName:this.includeThemeName,
             includeKecklock: this.includeKecklock,
             includeWithoutIS:this.includeWithoutIS,
-            includeMultiTheme :this.includeMultiTheme,
+            includeMCITheme : this.includeMCITheme,
+            includeMERASTheme : this.includeMERASTheme,
+            includeSAUDITheme : this.includeSAUDITheme,
+            includeDefultTheme : this.includeDefultTheme,
+            // includeMultiTheme :this.includeMultiTheme,
             includeSSR :this.includeSSR,
             includeArLang:this.includeArLang,
             includeEnLang:this.includeEnLang,
@@ -152,20 +170,32 @@ module.exports = class extends Generator {
             mkdirp(item);
         });
 
-        if (this.includeAboutUs) {
-            copy('angular/_src/app/pages/about-us/about-us.component.html', 'src/app/pages/about-us/about-us.component.html');
-            copy('angular/_src/app/pages/about-us/about-us.component.scss', 'src/app/pages/about-us/about-us.component.scss');
-            copy('angular/_src/app/pages/about-us/about-us.component.ts', 'src/app/pages/about-us/about-us.component.ts');
-            copy('angular/_src/app/pages/about-us/about-us.component.spec.ts', 'src/app/pages/about-us/about-us.component.spec.ts');
-          }
-          if (this.includeContactUs) {
-            copy('angular/_src/app/pages/contact-us/contact-us.component.html', 'src/app/pages/contact-us/contact-us.component.html');
-            copy('angular/_src/app/pages/contact-us/contact-us.component.scss', 'src/app/pages/contact-us/contact-us.component.scss');
-            copy('angular/_src/app/pages/contact-us/contact-us.component.ts', 'src/app/pages/contact-us/contact-us.component.ts');
-            copy('angular/_src/app/pages/contact-us/contact-us.component.spec.ts', 'src/app/pages/contact-us/contact-us.component.spec.ts');
-          }
+            if (this.includeAboutUs) {
+                copy('angular/_src/app/pages/about-us/about-us.component.html', 'src/app/pages/about-us/about-us.component.html');
+                copy('angular/_src/app/pages/about-us/about-us.component.scss', 'src/app/pages/about-us/about-us.component.scss');
+                copy('angular/_src/app/pages/about-us/about-us.component.ts', 'src/app/pages/about-us/about-us.component.ts');
+                copy('angular/_src/app/pages/about-us/about-us.component.spec.ts', 'src/app/pages/about-us/about-us.component.spec.ts');
+            }
+            if (this.includeContactUs) {
+                copy('angular/_src/app/pages/contact-us/contact-us.component.html', 'src/app/pages/contact-us/contact-us.component.html');
+                copy('angular/_src/app/pages/contact-us/contact-us.component.scss', 'src/app/pages/contact-us/contact-us.component.scss');
+                copy('angular/_src/app/pages/contact-us/contact-us.component.ts', 'src/app/pages/contact-us/contact-us.component.ts');
+                copy('angular/_src/app/pages/contact-us/contact-us.component.spec.ts', 'src/app/pages/contact-us/contact-us.component.spec.ts');
+            }
+            // if(this.includeMCITheme){
+            //     copy('angular/_src/app/mci', 'src/app/mci');
+            //     copy('angular/_src/assets/mci', 'src/assets/<%= includeProjectName %>');
+            // }
+            if(this.includeDefultTheme){
+                copy('angular/_src/app/defult', 'src/app/defult');
+            }
+            if(this.includeMERASTheme){
+                copy('angular/_src/app/meras', 'src/app/meras');
+            }
+            if(this.includeSAUDITheme){
+                copy('angular/_src/app/saudi', 'src/app/saudi');
+            }
 }
-
 install() {
     const hasYarn = commandExists('yarn');
     this.installDependencies({

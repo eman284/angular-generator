@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="nav.home" datatype="html">
+        <source>home</source>
+        <target>home</target>
+      </trans-unit>
+      <trans-unit id="nav.register" datatype="html">
+        <source>register</source>
+        <target>register</target>
+      </trans-unit>
+      <trans-unit id="nav.login" datatype="html">
+        <source>login</source>
+        <target>login</target>
+      </trans-unit>
+      <trans-unit id="emailPlaceHolder" datatype="html">
+        <source>Enter email</source>
+        <target>Enter email</target>
+      </trans-unit>
+      <trans-unit id="passwordPlaceHolder" datatype="html">
+        <source>Enter password</source>
+        <target>Enter password</target>
+      </trans-unit>
+      <trans-unit id="invalidEmail" datatype="html">
+        <source>Please provide a email.</source>
+        <target>Please provide a email.</target>
+      </trans-unit>
+      <trans-unit id="invalidPassword" datatype="html">
+        <source>Please provide a password.</source>
+        <target>Please provide a password.</target>
+      </trans-unit>
+      <trans-unit id="submit" datatype="html">
+        <source>submit</source>
+        <target>submit</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
