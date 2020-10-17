@@ -38,46 +38,25 @@ module.exports = class extends Generator {
         return this.prompt(config.prompts).then(answers => {
             const identityServer = answers.identityServer;
             const selectLanguage = answers.selectLanguage;
-            const selectDesginSystem = answers.selectDesginSystem;
             const selectComponent = answers.selectComponent;
             const selectPages = answers.selectPages;
-            const selectTheme = answers.selectThemes;
 
             const hasIdentityServerFeature = feat => identityServer && identityServer.includes(feat);
-            const hasSelectThemesFeature = feat => selectTheme && selectTheme.includes(feat);
 
             const hasSelectLanguageFeature = feat => selectLanguage && selectLanguage.includes(feat);
-            const hasSlectDesginSystemFeature = feat => selectDesginSystem && selectDesginSystem.includes(feat);
             const hasSelectComponent = feat => selectComponent && selectComponent.includes(feat);
             const hasSelectPages = feat => selectPages && selectPages.includes(feat);
 
             this.includeProjectName = answers.includeProjectName;
             this.includeThemeName = answers.includeThemeName;
-            // this.includeMultiTheme = answers.includeMultiTheme;
-
-            this.includeKecklock = hasIdentityServerFeature('includeKecklock');
-            this.includeWithoutIS = hasIdentityServerFeature('includeWithoutIS');
-
-            this.includeMCITheme = hasSelectThemesFeature('includeMCITheme');
-            this.includeMERASTheme = hasSelectThemesFeature('includeMERASTheme');
-            this.includeSAUDITheme = hasSelectThemesFeature('includeSAUDITheme');
-            this.includeDefultTheme = hasSelectThemesFeature('includeDefultTheme');
-            // this.includeMultiTheme = answers.includeMultiTheme;
 
             this.includeSSR = answers.includeSSR;
+            this.identityServerKeyclock = answers.identityServerKeyclock;
 
             this.includeArLang = hasSelectLanguageFeature('includeArLang');
             this.includeEnLang = hasSelectLanguageFeature('includeEnLang');
             this.includeFrLang = hasSelectLanguageFeature('includeFrLang');
 
-            this.includeMCI = hasSlectDesginSystemFeature('includeMCI');
-            this.includeMOJ = hasSlectDesginSystemFeature('includeMOJ');
-            this.includeSASSO = hasSlectDesginSystemFeature('includeSASSO');
-            this.includeSFDA = hasSlectDesginSystemFeature('includeSFDA');
-            this.includeSAIP = hasSlectDesginSystemFeature('includeSAIP');
-            this.includeMonshaat = hasSlectDesginSystemFeature('includeMonshaat');
-            this.includeAmaly = hasSlectDesginSystemFeature('includeAmaly');
-            this.includeThiqah = hasSlectDesginSystemFeature('includeThiqah');
 
             this.includeModal = hasSelectComponent('includeModal');
             this.includeBlockLoader = hasSelectComponent('includeBlockLoader');
@@ -109,12 +88,10 @@ module.exports = class extends Generator {
             includeThemeNameLower: this.includeThemeName.toLowerCase(),
             includeKecklock: this.includeKecklock,
             includeWithoutIS: this.includeWithoutIS,
-            includeMCITheme: this.includeMCITheme,
-            includeMERASTheme: this.includeMERASTheme,
-            includeSAUDITheme: this.includeSAUDITheme,
-            includeDefultTheme: this.includeDefultTheme,
+
             // includeMultiTheme :this.includeMultiTheme,
             includeSSR: this.includeSSR,
+            identityServerKeyclock: this.identityServerKeyclock,
             includeArLang: this.includeArLang,
             includeEnLang: this.includeEnLang,
             includeFrLang: this.includeFrLang,
@@ -173,7 +150,7 @@ module.exports = class extends Generator {
         config.dirsToCreate.forEach(item => {
             mkdirp(item);
         });
-        if (this.includeKecklock) {
+        if (this.identityServerKeyclock) {
             copy('angular/_src/app/auth/components/keycloak', 'src/app/auth/components/keycloak');
             copy('angular/_src/app/auth/auth-routing.ts', 'src/app/auth/auth-routing.ts');
             copy('angular/_src/app/auth/auth.module.ts', 'src/app/auth/auth.module.ts');

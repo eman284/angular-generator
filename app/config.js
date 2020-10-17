@@ -30,50 +30,11 @@ module.exports = {
             message: 'ًWhat is Theme name?',
         },
         {
-            type: 'checkbox',
-            name: 'identityServer',
-            message: 'Which additional Identity Server would you like to include?',
-            choices: [
-                {
-                    name: 'Kecklock',
-                    value: 'includeKecklock',
-                    checked: false
-                },
-                {
-                    name: 'without IS',
-                    value: 'includeWithoutIS',
-                    checked: false
-                }
-            ]
+            type: 'confirm',
+            name: 'identityServerKeyclock',
+            message: 'Would you like to add Keyclock?'
         },
-        {
-            type: 'checkbox',
-            name: 'selectThemes',
-            message: 'Which Themes would you like to include?',
-            choices: [
-                {
-                    name: 'Defult',
-                    value: 'includeDefultTheme',
-                    checked: true
-                },
-                {
-                    name: 'MCI',
-                    value: 'includeMCITheme',
-                    checked: false
-                },
-                {
-                    name: 'MERAS',
-                    value: 'includeMERASTheme',
-                    checked: false
-                }
-                ,
-                {
-                    name: 'SAUDI',
-                    value: 'includeSAUDITheme',
-                    checked: false
-                }
-            ]
-        },
+
         {
             type: 'confirm',
             name: 'includeSSR',
@@ -100,63 +61,6 @@ module.exports = {
                     checked: false
                 },
             ]
-        },
-        {
-            type: 'checkbox',
-            name: 'selectDesginSystem',
-            message: 'Which Desgin System would you like to include?',
-            choices: [
-                {
-                    name: 'MCI',
-                    value: 'includeMCI',
-                    checked: false
-                },
-                {
-                    name: 'MOJ',
-                    value: 'includeMOJ',
-                    checked: false
-                },
-                {
-                    name: 'SASSO',
-                    value: 'includeSASSO',
-                    checked: false
-                },
-                ,
-                {
-                    name: 'SFDA',
-                    value: 'includeSFDA',
-                    checked: false
-                },
-                ,
-                {
-                    name: 'SAIP',
-                    value: 'includeSAIP',
-                    checked: false
-                },
-                ,
-                {
-                    name: 'Monshaat',
-                    value: 'includeMonshaat',
-                    checked: false
-                },
-                {
-                    name: 'MOMRA',
-                    value: 'includeMOMRA',
-                    checked: false
-                },
-                {
-                    name: 'Amaly',
-                    value: 'includeAmaly',
-                    checked: false
-                },
-                {
-                    name: 'Thiqah',
-                    value: 'includeThiqah',
-                    checked: false
-                },
-
-            ]
-
         },
         {
             type: 'checkbox',
