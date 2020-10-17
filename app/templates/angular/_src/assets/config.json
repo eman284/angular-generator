@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://localhost:44340/api/",
+  "_baseUrl": "http://172.25.12.24:8080/api/",
+  "tokenUrl": "https://localhost:44340",
+  "loginUrl": "/ar/auth/login",
+  "code": "GTM-5SDWFB4",
+  "_brandingUrl": "http://127.0.0.1:5504/src/branding/",
+  "brandingUrl": "assets/",
+  "production": false
+}

@@ -8,6 +8,8 @@ import {
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
+import { LanguageUpdateService } from '../language/language.service';
+import * as environment from "../../../../assets/config.json";
 
 @Injectable({
   providedIn: "root"
@@ -15,16 +17,18 @@ import { map, catchError } from "rxjs/operators";
 export class AppInterceptor implements HttpInterceptor {
   recaptchaToken: string = "";
 
-  constructor(@Inject(LOCALE_ID) private locale: string) {}
+  constructor(
+    private languageUpdateService:LanguageUpdateService
+  ) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    const token: string = `Bearer ${sessionStorage.getItem("access_token")}` || '';
 
-    const token: string = localStorage.getItem("token") || "Basic xyz=";
-
-    if (!request.headers.has("Content-type")) {
+    
+    if (!request.headers.has("Content-type") && !request.url.toLowerCase().includes('upload')) {
       request = request.clone({
         headers: request.headers.set("Content-type", "Application/json")
       });
@@ -38,7 +42,7 @@ export class AppInterceptor implements HttpInterceptor {
 
     if (!request.headers.has("Accept-Language")) {
       request = request.clone({
-        headers: request.headers.set("Accept-Language", this.locale)
+        headers: request.headers.set("Accept-Language", this.languageUpdateService.getCurrentLangSt())
       });
     }
 
@@ -48,12 +52,11 @@ export class AppInterceptor implements HttpInterceptor {
       }),
 
       catchError((error: HttpErrorResponse) => {
-        if (
-          error.status === 401 ||
-          error.status === 403 ||
-          error.status === 400
-        ) {
+        if (error.status === 403 || error.status === 400 || error.status === 500) {
           console.log("error.status", error.status);
+        }
+        else if(error.status === 401){
+
         }
         return throwError(error);
       })

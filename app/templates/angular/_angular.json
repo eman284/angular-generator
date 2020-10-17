@@ -6,9 +6,7 @@
     "<%= includeProjectName %>": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
+        "styleText": "scss"
       },
       "root": "",
       "sourceRoot": "src",
@@ -17,32 +15,29 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/<%= includeProjectName %>",
+            "aot": true,
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
-              <%_ if (includeMCITheme) { -%>
-              ,"src/app/mci/assets/css/rtl/style.css"
-              <%_ } -%>
-              <%_ if (includeDefultTheme) { -%>
-              ,"src/app/defult/assets/scss/main.scss"
-              <%_ } -%>
-              <%_ if (includeMERASTheme) { -%>
-                ,"src/app/meras/assets/scss/main.scss"
-              <%_ } -%>
-              <%_ if (includeSAUDITheme) { -%>
-                ,"src/app/saudi/assets/scss/main.scss"
-              <%_ } -%>
+              "node_modules/@ng-select/ng-select/themes/default.theme.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/select2/dist/js/select2.full.js",
+              "node_modules/mci-sass-engine/vendors.js",
+              "node_modules/mci-sass-engine/bootstrap-native.js",
+              "node_modules/mci-sass-engine/svgxuse.js",
+              "node_modules/mci-cds/app.js",
+              "node_modules/th-spinner/app.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -52,11 +47,12 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
               "outputHashing": "all",
+              "optimization": false,
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -64,12 +60,98 @@
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
+            },
+            "preprod": {
+              "outputHashing": "all",
+              "aot": true,
+              "buildOptimizer": true,
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "namedChunks": false,
+              "baseHref": "/",
+              "outputPath": "dist/preprod/",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "assets": [
+                "src/favicon.ico",
+                "src/assets",
+                "src/robots.txt",
+                "src/app/mci/assets/",
+                "src/manifest.webmanifest"
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json",
+              "styles": [],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.pre-prod.ts"
+                }
+              ]
+            },
+            "prod": {
+              "outputHashing": "all",
+              "aot": true,
+              "buildOptimizer": true,
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true,
+              "polyfills": "src/polyfills.ts",
+              "vendorChunk": false,
+              "namedChunks": false,
+              "baseHref": "/",
+              "outputPath": "dist/prod/",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json",
+              "assets": [
+                "src/favicon.ico",
+                "src/assets",
+                "src/robots.txt",
+                "src/app/mci/assets/",
+                "src/manifest.webmanifest"
+              ],
+              "styles": [],
+              "scripts": [
+                "node_modules/mci-sass-engine/vendors.js",
+                "node_modules/mci-sass-engine/bootstrap-native.js",
+                "node_modules/mci-sass-engine/svgxuse.js",
+                "node_modules/mci-cds/app.js"
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -101,23 +183,10 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
-            "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
-               <%_ if (includeMCITheme) { -%>
-                ,"src/app/mci/assets/css/rtl/style.css"
-                <%_ } -%>
-                <%_ if (includeDefultTheme) { -%>
-                ,"src/app/defult/assets/scss/main.scss"
-                <%_ } -%>
-                <%_ if (includeMERASTheme) { -%>
-                  ,"src/app/meras/assets/scss/main.scss"
-                <%_ } -%>
-                <%_ if (includeSAUDITheme) { -%>
-                  ,"src/app/saudi/assets/scss/main.scss"
-                <%_ } -%>
-            ],
+            "styles": [],
             "scripts": []
           }
         },
@@ -145,8 +214,29 @@
               "devServerTarget": "<%= includeProjectName %>:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "<%= includeProjectName %>"
+    }
+  },
+  "defaultProject": "<%= includeProjectName %>",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }

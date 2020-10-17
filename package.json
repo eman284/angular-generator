@@ -4,6 +4,7 @@
     "chalk": "^4.1.0",
     "command-exists": "^1.2.9",
     "mkdirp": "^0.5.5",
+    "pascalcase": "^1.0.0",
     "yeoman-generator": "^4.12.0",
     "yosay": "^2.0.2"
   },

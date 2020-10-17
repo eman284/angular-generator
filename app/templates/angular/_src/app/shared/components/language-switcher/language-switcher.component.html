@@ -1,5 +1,11 @@
-<ul>
-  <!-- <li *ngFor="let item of languages">
-    <a href="{{item.link}}">{{item.lang}}</a>
-  </li> -->
-</ul>
+<ng-conatiner class="app-switcher">
+  <ng-template ngFor [ngForOf]="languages" let-i="index" let-lang>
+    <button class="btn btn-success" *ngIf="currentang !== lang" (click)="changeLang(lang)">
+      {{ "lang_switcher.currentLang" | translate }}
+    </button>
+  </ng-template>
+</ng-conatiner>
+
+<!-- <mci-header #mciHeader _id="mciHeader" _images="./assets/images/" _lang="ar"
+  _brand='{"label":"نظام السجل التجاري - خدمة تجديد السجل" ,"link":"/"}'
+  _logo='{ "path":"./assets/images/logo.svg", "link":"https://mci.gov.sa/" }'></mci-header> -->
