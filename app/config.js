@@ -518,11 +518,6 @@ module.exports = {
         }
         ,
         {
-            input: 'angular/_package-lock.json',
-            output: 'package-lock.json'
-        }
-        ,
-        {
             input: 'angular/_package.json',
             output: 'package.json'
         }
@@ -530,11 +525,6 @@ module.exports = {
         {
             input: 'angular/_README.md',
             output: 'README.md'
-        }
-        ,
-        {
-            input: 'angular/_server.ts',
-            output: 'server.ts'
         }
         ,
         {
@@ -561,11 +551,7 @@ module.exports = {
             input: 'angular/_tslint.json',
             output: 'tslint.json'
         }
-        ,
-        {
-            input: 'angular/_webpack.server.config.js',
-            output: 'webpack.server.config.js'
-        }
+
 
     ]
 }

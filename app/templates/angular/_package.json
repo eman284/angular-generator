@@ -9,10 +9,12 @@
     "test": "ng test",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "e2e": "ng e2e",
-    "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
-    "serve:ssr": "node dist/server.js",
-    "build:client-and-server-bundles": "npm run build-i18n && ng run <%= includeProjectName %>:server",
-    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+    <% if (includeSSR) { %>
+      "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
+      "serve:ssr": "node dist/server.js",
+      "build:client-and-server-bundles": "npm run build-i18n && ng run <%= includeProjectName %>:server",
+      "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+    <% } %>
     "compodoc": "npx compodoc -p ./tsconfig.json -s",
     "build-dev": "ng build --prod --configuration dev",
     "build-test": "ng build --prod --configuration test",

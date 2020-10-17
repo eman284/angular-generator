@@ -181,6 +181,10 @@ module.exports = class extends Generator {
             copy('angular/_src/app/shared/providers/auth/auth-service.service.ts', 'src/app/shared/providers/auth/auth-service.service.ts');
 
         }
+        if (this.includeSSR) {
+            copy('angular/_server.ts', 'server.ts');
+            copy('angular/_webpack.server.config.js', 'webpack.server.config.js');
+        }
 
     }
     install() {
